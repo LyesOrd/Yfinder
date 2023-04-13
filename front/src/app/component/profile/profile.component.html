@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votre profil</title>
+</head>
+
+<body>
+    <div class="flex0">
+        <div class="profile">
+            <form id="profile-form">
+                <div class="form-head">
+                    <img src="/front/src/app/component/profile/user.png" alt="Photo de profil">
+                    <div class="form-title">
+                        <p>Mon profil</p>
+                    </div>
+                </div>
+
+                <br>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom">
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="prenom">
+                <label for="age">Âge :</label>
+                <input type="number" id="age" name="age">
+                <label for="dateNaissance">Date de naissance :</label>
+                <input type="date" id="dateNaissance" name="dateNaissance">
+                <label for="infosSupplementaires">Informations supplémentaires :</label>
+                <textarea id="infosSupplementaires" name="infosSupplementaires"></textarea>
+                <input type="submit" value="Enregistrer">
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('profile-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Empêche la soumission du formulaire
+
+            // Récupérer les valeurs des champs du formulaire
+            var nom = document.getElementById('nom').value;
+            var prenom = document.getElementById('prenom').value;
+            var age = document.getElementById('age').value;
+            var dateNaissance = document.getElementById('dateNaissance').value;
+            var infosSupplementaires = document.getElementById('infosSupplementaires').value;
+
+            // Afficher les informations du profil
+            var profil = "Nom : " + nom + "\n" +
+                "Prénom : " + prenom + "\n" +
+                "Âge : " + age + "\n" +
+                "Date de Naissance : " + dateNaissance + "\n" +
+                "Informations supplémentaires : " + infosSupplementaires;
+            alert(profil);
+        });
+
+    </script>
+</body>
+
+</html>
