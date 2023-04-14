@@ -14,6 +14,7 @@ export class ApiListService {
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<any> {
+    console.log(this.selectedMetier, 'selectedMetier');
     return this.http.get<any>(this.apiUrl, {
       params: {
         title: this.selectedMetier,

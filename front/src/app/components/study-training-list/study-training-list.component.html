@@ -1,14 +1,40 @@
-<div>
+<!-- <div>
     {{this.apiData}}
-
     <select [(ngModel)]="selectedMetier" (change)="getSelectedMetier()">
-        <!-- Appeler la fonction getSelectedMetier() sur l'événement change -->
+        Appeler la fonction getSelectedMetier() sur l'événement change
         <option *ngFor="let metier of metiers" [value]="metier">{{ metier }}</option>
     </select>
     <input type="text" [(ngModel)]="departement" placeholder="Entrez le département">
 <button (click)="onSubmit()">Valider</button>
-</div>
+</div> -->
 
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-inline">
+      <div class="form-group mb-2">
+        <label for="selectMetier">Selectionné un domaine</label>
+        <select id="selectMetier" formControlName="selectedMetier" class="form-control">
+          <option *ngFor="let metier of metiers" [value]="metier">{{ metier }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="inputDepartement">Entrez le département :</label>
+        <input type="number" id="inputDepartement" formControlName="departement" class="form-control" placeholder="Ex: 75">
+      </div>
+      <button type="submit" class="btn btn-primary">Valider</button>
+    </form>
+  </div>
+  
+
+<div *ngIf="formations.length > 0;" class="container">
+    <div *ngFor="let formation of formations" class="card mb-2">
+      <div class="card-header">
+        {{ formation.ideaType }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ formation.title }}</h5>
+        <p class="card-text">{{ formation.rncpLabel }}</p>
+        <p class="card-text">{{ formation.zipCode }}</p>
+        <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Plus d'infos</a>
 
 <div *ngIf="formations.length > 0; else noFormations">
     <div *ngFor="let formation of formations">
@@ -29,8 +55,10 @@
                   
             </div>
         </div>
+
     </div>
+  </div>
+<div *ngIf="formations.length === 0" class="container">
+    <h3 class="h4">0 Résultats. Aucune offre de formation disponible.</h3>
 </div>
-<ng-template #noFormations>
-    <p>Aucune offre de formation disponible.</p>
-</ng-template>
+  

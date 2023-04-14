@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiListService } from './api-list.service';
 import { compileNgModule } from '@angular/compiler';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -136,25 +137,40 @@ export class StudyTrainingListComponent implements OnInit {
   public selectedMetier: string = ''; 
   public insee: string = ''; // Ajouter cette déclaration
 
+  public form!: FormGroup;
+
+
+  constructor(private api: ApiListService, private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.api.getAllMetiers().subscribe(data => {
+      this.metiers = data.metiers;
+    });
+
+    this.form = this.fb.group({
+      selectedMetier: new FormControl(''),
+      departement: new FormControl('')
+    });
+  }
 
   public onSubmit(): string {
-    
+    console.log(this.form.value);
+    this.getSelectedMetier();
+    return this.form.value.departement;
     return this.insee
   }
+
   public getSelectedMetier(): void {
-    this.api.selectedMetier = this.selectedMetier;
+    this.api.selectedMetier = this.form.value.selectedMetier;
     this.api.getData().subscribe(data => {
-      // Essayer de comprendre ce principe pour appliquer la même chose au autres API
-      console.log(data)
-      this.apiData = data.labelsAndRomes[0].romes; // Utiliser la fonction map pour extraire les codes ROMES de chaque élément
-      console.log(this.apiData.toString(), 'apiData')
-      
+      this.apiData = data.labelsAndRomes[0].romes;
     })
+    
+    this.api.getFormationsParRegion(this.form.value.departement, this.apiData).subscribe(
     console.log(this.insee + 'dep');
     /*this.api.getFormationsParRegion(this.departement, this.apiData).subscribe(
       data => {
         // Traitement des données de réponse de l'API
-        console.log(data.results[0].place.zipCode + 'forma /region');
         this.formations = data.results;
         
       },
@@ -210,5 +226,4 @@ export class StudyTrainingListComponent implements OnInit {
 
 
   }
-
 }
