@@ -35,7 +35,27 @@
         <p class="card-text">{{ formation.rncpLabel }}</p>
         <p class="card-text">{{ formation.zipCode }}</p>
         <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Plus d'infos</a>
-      </div>
+
+<div *ngIf="formations.length > 0; else noFormations">
+    <div *ngFor="let formation of formations">
+        <div class="card w-75 mb-2 center">
+            <div class="card-header">
+                {{ formation.ideaType }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ formation.title }}</h5>
+                <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
+                <p class="card-text">{{ formation.rncpLabel }}</p>
+               
+                <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
+                <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
+                <span (click)="likeFormation(formation)">
+                    <i class="bi bi-star-fill"></i>
+                  </span>
+                  
+            </div>
+        </div>
+
     </div>
   </div>
 <div *ngIf="formations.length === 0" class="container">

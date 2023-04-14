@@ -10,7 +10,9 @@ import { FormsModule } from '@angular/forms';
 
 // Importez ces deux modules
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { firebaseConfig } from '../environments/firebase-config';
+import { ProfileComponent } from './components/profile/profile.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -23,18 +25,17 @@ import { RegisterComponent } from './components/register/register.component'
   declarations: [
     AppComponent,
     HomePageComponent,
-    RegisterComponent,
     NavbarComponent,
     StudyTrainingListComponent,
     RegisterComponent,
     SearchFormComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    FormsModule,
     ReactiveFormsModule, 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,

@@ -35,4 +35,13 @@ export class ApiListService {
     return this.http.get<any>('https://labonnealternance.apprentissage.beta.gouv.fr/api/V1/formationsParRegion?caller=contact@ynov.com', { params: params });
   }
 
+  public getJobsParInsee(insee: string, romes: string): Observable<any> {
+    // Créer les paramètres pour l'appel API avec les valeurs de departement et romes
+    let params = new HttpParams();
+    params = params.set('insee', insee);
+    params = params.set('romes', romes);
+
+    return this.http.get<any>('https://labonnealternance.apprentissage.beta.gouv.fr/api/V1/jobs?caller=contact@ynov.com&radius=0', { params: params });
+  }
+
 }
