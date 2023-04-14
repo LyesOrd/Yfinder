@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+h2 {
+    text-align: center;
+}
+
 .flex0 {
     display: flex;
     justify-content: center;
@@ -12,6 +16,16 @@
     /* Centrage vertical */
     height: 100vh;
     /* Hauteur de la fenêtre visible */
+}
+
+#contenair {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+#center {
+    text-align: center;
 }
 
 .button {
@@ -78,4 +92,19 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+.border {
+    border: 12px black solid;
+    border-radius: 5px;
+}
+
+.border2 {
+    border: 12px black solid;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.center-item {
+    text-align: center;
 }
