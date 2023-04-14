@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex0 {
+    display: flex;
+    justify-content: center;
+    /* Centrage horizontal */
+    align-items: center;
+    /* Centrage vertical */
+    height: 100vh;
+    /* Hauteur de la fenêtre visible */
+}
+
+.button {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+    margin-right: 5px;
+}
+
+.profile {
+    border: 2px solid black;
+    border-radius: 8px;
+    margin: 15px;
+    padding: 30px;
+    max-width: 500px;
+    /* Largeur maximale du formulaire */
+    /* width: 50%; */
+    /* Largeur du formulaire sur 100% de l'espace disponible */
+}
+
+.form-head {
+    display: flex;
+    align-items: center;
+    /* Alignement vertical au centre */
+}
+
+.form-head img {
+    width: 50px;
+    /* Ajustez la largeur de l'image selon vos besoins */
+    margin-right: 10px;
+    /* Marge à droite pour séparer l'image du texte */
+}
+
+.form-title {
+    text-align: center;
+    /* flex-grow: 1; */
+    /* Permet au texte de prendre tout l'espace disponible */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+label,
+input,
+textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}

@@ -30,11 +30,11 @@ import { RegisterComponent } from './components/register/register.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule, 
-    AngularFireModule.initializeApp(firebaseConfig), 
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    
+
     HttpClientModule
   ],
   providers: [],
