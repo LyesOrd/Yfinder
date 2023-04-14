@@ -15,6 +15,7 @@ h2 {
     align-items: center;
     /* Centrage vertical */
     height: 100vh;
+    width: 100%;
     /* Hauteur de la fenêtre visible */
 }
 
@@ -107,4 +108,12 @@ input[type="submit"]:hover {
 
 .center-item {
     text-align: center;
+}
+
+
+
+.cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

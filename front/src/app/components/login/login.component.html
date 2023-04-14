@@ -13,30 +13,30 @@
 </header>
 
 <body>
-    <div class="flexL">
-        <div class="wrapper">
-            <div class="title">
-                Se connecter
-            </div>
-            <form [formGroup]="loginForm" (submit)="onSubmit()">
-                <div class="field">
-                    <input type="email" id="email" formControlName="email" required>
-                    <label>Adresse e-mail</label>
-                </div>
-                <div class="field">
-                    <input type="password" id="password" formControlName="password" required>
-                    <label>Mot de passe</label>
-                </div>
-                <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-                <div class="field">
-                    <input type="submit" value="Connexion">
-                </div>
-                <div class="signup-link">
-                    Pas encore membre ? <a href="/register">S'enregistrer</a>
-                </div>
-            </form>
+
+    <div class="wrapper">
+        <div class="title">
+            Se connecter
         </div>
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <div class="field">
+                <input type="email" id="email" formControlName="email" required>
+                <label>Adresse e-mail</label>
+            </div>
+            <div class="field">
+                <input type="password" id="password" formControlName="password" required>
+                <label>Mot de passe</label>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            <div class="field">
+                <input type="submit" value="Connexion">
+            </div>
+            <div class="signup-link">
+                Pas encore membre ? <a href="/register">S'enregistrer</a>
+            </div>
+        </form>
     </div>
+
 </body>
 
 </html>
