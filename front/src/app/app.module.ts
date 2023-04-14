@@ -19,7 +19,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component'
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,11 +34,13 @@ import { RegisterComponent } from './components/register/register.component'
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule, 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
     AngularFirestoreModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
