@@ -9,6 +9,7 @@ import { StudyTrainingListComponent } from './components/study-training-list/stu
 
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { firebaseConfig } from '../environments/firebase-config';
 import { ProfileComponent } from './components/profile/profile.component';
 
@@ -40,7 +41,6 @@ import { RegisterComponent } from './components/register/register.component'
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-
     HttpClientModule
 
   ],

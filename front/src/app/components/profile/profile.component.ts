@@ -26,6 +26,7 @@ interface Formation {
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
   public user: firebase.User | null = null;
   public userProfile: Observable<UserProfile | undefined> | undefined;
   public likedFormations: Observable<Formation[]> | undefined;
@@ -64,4 +65,5 @@ export class ProfileComponent implements OnInit {
       console.error('Error removing formation from liked formations:', error);
     }
   }
+
 }
