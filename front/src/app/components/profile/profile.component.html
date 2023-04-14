@@ -1,20 +1,24 @@
 <div *ngIf="user && userProfile | async as profile">
-    <h2>Profil</h2>
-    <p>Nom: {{ profile.nom }}</p>
-    <p>Prénom: {{ profile.prenom }}</p>
-    <p>Téléphone: {{ profile.telephone }}</p>
-  
-    <div *ngIf="likedOffers | async as offers">
-      <h2>Offres d'alternance aimées</h2>
-      <div class="container">
-        <div class="card" *ngFor="let offer of offers">
-          <div class="card-body">
-            <h5 class="card-title">{{ offer.title }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ offer.company }} - {{ offer.location }}</h6>
-            <p class="card-text">{{ offer.description }}</p>
-          </div>
-        </div>
+  <h2>Profil</h2>
+  <p>Nom: {{ profile.nom }}</p>
+  <p>Prénom: {{ profile.prenom }}</p>
+  <p>Téléphone: {{ profile.telephone }}</p>
+</div>
+
+<div *ngIf="likedFormations | async as formations">
+  <h2>Formations aimées</h2>
+  <div *ngFor="let formation of formations">
+    <div class="card w-75 mb-2">
+      <div class="card-header">
+        {{ formation.ideaType }}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ formation.title }}</h5>
+        <p class="card-text">{{ formation.rncpLabel }}</p>
+        
+        <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
+        <button (click)="unlikeFormation(formation.id)" class="btn btn-danger">Unlike</button> <!-- Ajout du bouton Unlike -->
       </div>
     </div>
   </div>
-  
+</div>
