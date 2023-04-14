@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiListService } from './api-list.service';
 import { compileNgModule } from '@angular/compiler';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 
 // Définir une interface pour la structure des données dans data.labelsAndRomes
@@ -9,12 +12,17 @@ interface LabelsAndRomesData {
   romes: string[];
 }
 
+
+
 export interface Formation {
+  id: string;
   title: string;
   ideaType: string;
   rncpLabel: string;
   onisepUrl: string;
-  zipCode: string
+  place: {
+    zipCode: string;
+  };
 }
 
 @Component({
@@ -60,7 +68,27 @@ export class StudyTrainingListComponent implements OnInit {
   
   }
 
-  constructor(private api: ApiListService) { }
+  constructor(
+    private api: ApiListService,
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore
+  ) { }
+
+  async likeFormation(formation: Formation) {
+    try {
+      const user = await this.afAuth.currentUser;
+      if (user) {
+        const likedFormationsCollection = this.afs.collection('users').doc(user.uid).collection('likedFormations');
+        await likedFormationsCollection.doc(formation.title).set({ ...formation });
+        console.log('La formation a été enregistrée avec succès.');
+      } else {
+        console.error('Erreur : utilisateur non connecté');
+      }
+    } catch (error) {
+      console.error('Erreur lors de l\'enregistrement de la formation aimée :', error);
+    }
+  }
+  
 
   ngOnInit(): void {
     /*this.api.getData().subscribe(data => {

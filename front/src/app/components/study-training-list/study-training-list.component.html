@@ -20,9 +20,13 @@
                 <h5 class="card-title">{{ formation.title }}</h5>
                 <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
                 <p class="card-text">{{ formation.rncpLabel }}</p>
-                <p class="card-text">{{ formation.zipCode }}</p>
+               
                 <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
                 <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
+                <span (click)="likeFormation(formation)">
+                    <i class="bi bi-star-fill"></i>
+                  </span>
+                  
             </div>
         </div>
     </div>
