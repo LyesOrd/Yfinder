@@ -6,17 +6,22 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+import { FormsModule } from '@angular/forms';
+import { FormationComponent } from './components/formation/formation.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NavbarComponent,
-    StudyTrainingListComponent
+    StudyTrainingListComponent,
+    FormationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
