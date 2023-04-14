@@ -9,6 +9,7 @@ import { StudyTrainingListComponent } from './components/study-training-list/stu
 
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { firebaseConfig } from '../environments/firebase-config';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,13 +33,11 @@ import { RegisterComponent } from './components/register/register.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     FormsModule
-    ReactiveFormsModule, 
-    AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
     AngularFirestoreModule,
-    
     HttpClientModule
 
   ],
