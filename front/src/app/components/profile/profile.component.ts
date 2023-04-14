@@ -54,10 +54,8 @@ export class ProfileComponent implements OnInit {
     }
   
     try {
-      // Supprimer la formation de la collection "likedFormations"
       await this.afs.collection('users').doc(this.user.uid).collection('likedFormations').doc(formationId).delete();
   
-      // Supprimer l'ID de la formation de la liste des formations aimées dans le profil utilisateur
       await this.afs.collection('users').doc(this.user.uid).update({
         likedFormations: firebase.firestore.FieldValue.arrayRemove(formationId)
       });

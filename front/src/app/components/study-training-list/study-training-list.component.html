@@ -23,7 +23,10 @@
                
                 <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
                 <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
-                <button (click)="likeFormation(formation)" class="btn btn-secondary">Like</button>
+                <span (click)="likeFormation(formation)">
+                    <i class="bi bi-star-fill"></i>
+                  </span>
+                  
             </div>
         </div>
     </div>

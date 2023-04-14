@@ -25,7 +25,7 @@
         </li>
       </ul>
       <div *ngIf="user$; else notLoggedIn" class="d-flex align-items-center">
-        <span id="userDisplayName">{{ user$?.nom }} {{ user$?.prenom }}</span>
+        <span id="userDisplayName">{{ user$.nom }} {{ user$.prenom }}</span>
         <button class="btn btn-outline-light ms-2" (click)="logout()">Se déconnecter</button>
       </div>
       <ng-template #notLoggedIn>
