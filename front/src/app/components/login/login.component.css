@@ -37,7 +37,7 @@
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: #6c757d;
+    background: #243449;
 }
 
 .wrapper form {
@@ -129,7 +129,7 @@ form .field input[type="submit"] {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: #6c757d;
+    background: #243449;
     transition: all 0.3s ease;
 }
 
