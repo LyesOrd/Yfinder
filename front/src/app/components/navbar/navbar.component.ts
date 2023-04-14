@@ -6,6 +6,12 @@ import firebase from 'firebase/compat/app';
 import { switchMap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
+export interface User {
+  uid: string;
+  email: string;
+  nom: string;
+  prenom: string;
+}
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +20,7 @@ import { of } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   user!: Observable<firebase.User | null>;
-  user$: { uid: string, email: string, nom: string, prenom: string } | null = null;
+  user$: User | null;
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) { 
     this.user$ = null;

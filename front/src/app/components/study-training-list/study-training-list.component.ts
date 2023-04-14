@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiListService } from './api-list.service';
 import { compileNgModule } from '@angular/compiler';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 // Définir une interface pour la structure des données dans data.labelsAndRomes
@@ -30,25 +31,37 @@ export class StudyTrainingListComponent implements OnInit {
   public selectedMetier: string = ''; 
   public departement: string = ''; // Ajouter cette déclaration
 
+  public form!: FormGroup;
+
+
+  constructor(private api: ApiListService, private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.api.getAllMetiers().subscribe(data => {
+      this.metiers = data.metiers;
+    });
+
+    this.form = this.fb.group({
+      selectedMetier: new FormControl(''),
+      departement: new FormControl('')
+    });
+  }
 
   public onSubmit(): string {
-    
-    return this.departement
+    console.log(this.form.value);
+    this.getSelectedMetier();
+    return this.form.value.departement;
   }
+
   public getSelectedMetier(): void {
-    this.api.selectedMetier = this.selectedMetier;
+    this.api.selectedMetier = this.form.value.selectedMetier;
     this.api.getData().subscribe(data => {
-      // Essayer de comprendre ce principe pour appliquer la même chose au autres API
-      console.log(data)
-      this.apiData = data.labelsAndRomes[0].romes; // Utiliser la fonction map pour extraire les codes ROMES de chaque élément
-      console.log(this.apiData.toString(), 'apiData')
-      
+      this.apiData = data.labelsAndRomes[0].romes;
     })
-    console.log(this.departement + 'dep');
-    this.api.getFormationsParRegion(this.departement, this.apiData).subscribe(
+    
+    this.api.getFormationsParRegion(this.form.value.departement, this.apiData).subscribe(
       data => {
         // Traitement des données de réponse de l'API
-        console.log(data.results[0].place.zipCode + 'forma /region');
         this.formations = data.results;
         
       },
@@ -58,24 +71,6 @@ export class StudyTrainingListComponent implements OnInit {
       }
     );
   
-  }
-
-  constructor(private api: ApiListService) { }
-
-  ngOnInit(): void {
-    /*this.api.getData().subscribe(data => {
-      // Essayer de comprendre ce principe pour appliquer la même chose au autres API
-      console.log(data)
-      this.apiData = data.labelsAndRomes.map((item: LabelsAndRomesData) => item.romes); // Utiliser la fonction map pour extraire les codes ROMES de chaque élément
-      console.log(this.apiData, 'apiData')
-    })*/
-
-    
-
-    this.api.getAllMetiers().subscribe(data => {
-      this.metiers = data.metiers;
-    });
-
   }
 
 }
