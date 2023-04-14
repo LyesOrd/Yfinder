@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NavbarComponent,
-    StudyTrainingListComponent
+    StudyTrainingListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
