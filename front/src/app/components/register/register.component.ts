@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-
+import { Router } from '@angular/router';
 
 export const environment = {
   production: false,
@@ -24,8 +24,11 @@ export const environment = {
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private afs: AngularFirestore) { }
-
+  
+  
+  
+  constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) { }
+  
   
 
   ngOnInit(): void {
@@ -53,6 +56,7 @@ export class RegisterComponent implements OnInit {
           prenom,
           telephone
         });
+        this.router.navigate(['/login']);
       } catch (error) {
         console.error('Error creating user:', error);
        
