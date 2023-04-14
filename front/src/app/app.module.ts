@@ -1,20 +1,41 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './component/login/login.component';
-import { ProfileComponent } from './component/profile/profile.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { firebaseConfig } from '../environments/firebase-config';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    ProfileComponent
+    HomePageComponent,
+    RegisterComponent,
+    NavbarComponent,
+    StudyTrainingListComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
