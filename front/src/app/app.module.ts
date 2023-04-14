@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -27,15 +28,35 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     LoginComponent
+=======
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomePageComponent,
+    NavbarComponent,
+    StudyTrainingListComponent
+>>>>>>> 165691ca893a3e80c38fe260e4096dd35cda81a7
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
     ReactiveFormsModule, // Ajoutez ReactiveFormsModule ici
     AngularFireModule.initializeApp(firebaseConfig), // Ajoutez AngularFireModule ici avec la configuration Firebase
     AngularFireAuthModule,
     AngularFirestoreModule
     
+=======
+    HttpClientModule
+>>>>>>> 165691ca893a3e80c38fe260e4096dd35cda81a7
   ],
   providers: [],
   bootstrap: [AppComponent]
