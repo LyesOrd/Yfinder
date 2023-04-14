@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlternanceOffer } from './alternance-offer.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { arrayUnion } from 'firebase/firestore';
+
 
 
 @Component({
@@ -29,6 +31,16 @@ export class HomePageComponent implements OnInit {
       location: 'Lyon',
       description: "Description de l'offre alternance 2",
     },
+    {
+      id: '3',
+      title: 'Offre alternance 3',
+      company: 'Entreprise 2',
+      location: 'Lyon',
+      description: "Description de l'offre alternance 2",
+    },
+
+
+   
   ];
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) { }
@@ -41,14 +53,12 @@ export class HomePageComponent implements OnInit {
     }, 1000);
   }
 
-  async likeOffer(offerId: string) {
+  async likeOffer(offer: AlternanceOffer) {
     try {
       const user = await this.afAuth.currentUser;
-      console.log('test', user)
       if (user) {
-        
         const likedOffersCollection = this.afs.collection('users').doc(user.uid).collection('likedOffers');
-        await likedOffersCollection.doc(offerId).set({ offerId });
+        await likedOffersCollection.doc(offer.id).set(offer);
         console.log('L\'offre d\'alternance a été enregistrée avec succès.');
       } else {
         console.error('Erreur : utilisateur non connecté');
@@ -57,6 +67,8 @@ export class HomePageComponent implements OnInit {
       console.error('Erreur lors de l\'enregistrement de l\'offre d\'alternance aimée :', error);
     }
   }
+  
+  
   
   
 }

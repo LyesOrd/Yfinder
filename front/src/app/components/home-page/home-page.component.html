@@ -24,7 +24,8 @@
             <h5 class="card-title">{{ offer.title }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ offer.company }} - {{ offer.location }}</h6>
             <p class="card-text">{{ offer.description }}</p>
-            <button (click)="likeOffer(offer.id)" class="btn btn-primary">Like</button>
+            <button (click)="likeOffer(offer)">Like</button>
+
           </div>
         </div>
       </div>

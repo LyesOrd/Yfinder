@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { firebaseConfig } from '../environments/firebase-config';
+import { ProfileComponent } from './components/profile/profile.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -25,7 +26,9 @@ import { RegisterComponent } from './components/register/register.component'
     NavbarComponent,
     StudyTrainingListComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
+    
   ],
   imports: [
     BrowserModule,
