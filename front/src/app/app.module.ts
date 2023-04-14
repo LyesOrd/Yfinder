@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+
+import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { firebaseConfig } from '../environments/firebase-config';
 
@@ -16,7 +18,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component'
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,18 +25,22 @@ import { RegisterComponent } from './components/register/register.component'
     RegisterComponent,
     NavbarComponent,
     StudyTrainingListComponent,
+
     RegisterComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
+    FormsModule
     ReactiveFormsModule, 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
     AngularFirestoreModule,
     
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

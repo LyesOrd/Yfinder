@@ -1,3 +1,32 @@
 <div>
     {{this.apiData}}
+
+    <select [(ngModel)]="selectedMetier" (change)="getSelectedMetier()">
+        <!-- Appeler la fonction getSelectedMetier() sur l'événement change -->
+        <option *ngFor="let metier of metiers" [value]="metier">{{ metier }}</option>
+    </select>
+    <input type="text" [(ngModel)]="departement" placeholder="Entrez le département">
+<button (click)="onSubmit()">Valider</button>
 </div>
+
+
+<div *ngIf="formations.length > 0; else noFormations">
+    <div *ngFor="let formation of formations">
+        <div class="card w-75 mb-2 center">
+            <div class="card-header">
+                {{ formation.ideaType }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ formation.title }}</h5>
+                <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
+                <p class="card-text">{{ formation.rncpLabel }}</p>
+                <p class="card-text">{{ formation.zipCode }}</p>
+                <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
+                <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #noFormations>
+    <p>Aucune offre de formation disponible.</p>
+</ng-template>
