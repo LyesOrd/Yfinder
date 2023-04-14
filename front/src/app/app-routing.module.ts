@@ -4,8 +4,9 @@ import { LoginComponent } from './component/login/login.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '/login', component: LoginComponent },
   { path: '', component: HomePageComponent },
+  { path: 'login', component: LoginComponent },
+ 
   // Ajoutez d'autres routes ici si nécessaire
   // { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirection vers /login
 
