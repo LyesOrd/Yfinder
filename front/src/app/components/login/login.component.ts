@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  errorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +28,8 @@ export class LoginComponent {
     });
   }
 
+
+
   async onSubmit() {
     const { email, password } = this.loginForm.value;
     try {
@@ -38,15 +42,14 @@ export class LoginComponent {
         const userData: { nom: string, prenom: string } = userDoc.data() as { nom: string, prenom: string };
         const nom = userData.nom;
         const prenom = userData.prenom;
-        // console.log('Nom:', nom);
-        // console.log('Prénom:', prenom);
   
         // Redirection vers la page d'accueil
         this.router.navigate(['']);
       }
+      this.errorMessage = null;
     } catch (error) {
       console.error('Error logging in:', error);
+      this.errorMessage = "L'adresse e-mail ou le mot de passe est invalide.";
     }
-  }
-  
+  } 
 }
