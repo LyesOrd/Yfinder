@@ -13,13 +13,13 @@
         <div class="title">
             Se connecter
         </div>
-        <form action="#">
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
             <div class="field">
-                <input type="text" required>
+                <input type="email" id="email" formControlName="email" required>
                 <label>Adresse e-mail</label>
             </div>
             <div class="field">
-                <input type="password" required>
+                <input type="password" id="password" formControlName="password" required>
                 <label>Mot de passe</label>
             </div>
             <div class="content">
@@ -35,7 +35,7 @@
                 <input type="submit" value="Connexion">
             </div>
             <div class="signup-link">
-                Pas encore membre ? <a href="#">S'enregistrer</a>
+                Pas encore membre ? <a href="/register">S'enregistrer</a>
             </div>
         </form>
     </div>
