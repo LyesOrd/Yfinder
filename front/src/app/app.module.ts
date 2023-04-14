@@ -6,9 +6,8 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
+import { LoginComponent } from './components/login/login.component';
 
-
-// Importez ces deux modules
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -28,6 +27,7 @@ const firebaseConfig = {
   appId: "1:743126886633:web:3cd45a4e319ca9864a6878"
 }
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ const firebaseConfig = {
     RegisterComponent,
     NavbarComponent,
     StudyTrainingListComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
