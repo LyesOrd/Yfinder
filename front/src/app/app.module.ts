@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
-
+import { SearchFormComponent } from './components/search-form/search-form.component';
+import { FormsModule } from '@angular/forms';
 
 // Importez ces deux modules
 import { ReactiveFormsModule } from '@angular/forms';
@@ -35,16 +35,17 @@ const firebaseConfig = {
     RegisterComponent,
     NavbarComponent,
     StudyTrainingListComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule, // Ajoutez ReactiveFormsModule ici
     AngularFireModule.initializeApp(firebaseConfig), // Ajoutez AngularFireModule ici avec la configuration Firebase
     AngularFireAuthModule,
     AngularFirestoreModule,
-    
     HttpClientModule
   ],
   providers: [],

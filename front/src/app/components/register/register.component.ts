@@ -16,9 +16,6 @@ export const environment = {
   }
 };
 
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './register.component.html',
@@ -62,5 +59,4 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
-  
 }

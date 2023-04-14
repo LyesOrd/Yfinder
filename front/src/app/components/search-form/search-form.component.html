@@ -1,0 +1,19 @@
+<form class="form-horizontal" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="input1" class="col-sm-2 control-label">Domaine:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="Informatiques, enseignement, ..." placeholder="Input 1" [(ngModel)]="searchForm">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="input2" class="col-sm-2 control-label">Département:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="input2" placeholder="69,42,..." [(ngModel)]="searchForm">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </div>
+  </div>
+</form>

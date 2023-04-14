@@ -14,12 +14,7 @@ export class StudyTrainingListComponent implements OnInit {
   constructor(private api: ApiListService) { }
 
   ngOnInit(): void {
-    this.api.getData().subscribe(data => {
-      // Essayer de comprendre ce principe pour appliquer la même chose au autres API
-      console.log(data)
-      this.apiData = data.labelsAndRomes[0].rncps;
-      console.log(this.apiData, 'apiData')
-    })
+
   }
 
 }
