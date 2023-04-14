@@ -7,8 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-html,
-body {
+.flexL {
     display: grid;
     height: 100vh;
     width: 100%;
@@ -38,7 +37,8 @@ body {
     color: #fff;
     user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: #6c757d;
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
 
 .wrapper form {
@@ -109,7 +109,7 @@ form .content .checkbox {
 form .content input {
     width: 15px;
     height: 15px;
-    background: red;
+    background: black;
 }
 
 form .content label {
@@ -130,7 +130,7 @@ form .field input[type="submit"] {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    background: #6c757d;
     transition: all 0.3s ease;
 }
 
