@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './component/login/login.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
@@ -14,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component'
 
 
 
@@ -32,9 +32,10 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginComponent,
+    RegisterComponent,
     NavbarComponent,
-    StudyTrainingListComponent
+    StudyTrainingListComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
