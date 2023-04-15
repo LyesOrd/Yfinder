@@ -132,7 +132,7 @@ export class StudyTrainingListComponent implements OnInit {
   public formations: Formation[] = [];
   public jobs: Job[] = [];
 
-  public selectedMetier: string = ''; 
+  public selectedMetier: string = '';
   public insee: string = ''; // Ajouter cette déclaration
 
   public form!: FormGroup;
@@ -141,7 +141,7 @@ export class StudyTrainingListComponent implements OnInit {
 
 
   constructor(
-    private api: ApiListService, 
+    private api: ApiListService,
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore) { }
@@ -166,11 +166,13 @@ export class StudyTrainingListComponent implements OnInit {
     this.api.getData().subscribe(data => {
       this.apiData = data.labelsAndRomes[0].romes;
     })
-    
-    this.api.getJobsParInsee(this.form.value.inseecode, this.apiData).subscribe(data => {
-      this.jobs = data.peJobs.results;
-    });
-  
+    // Utiliser setTimeout pour ajouter un délai de 2 secondes (2000 millisecondes)
+    setTimeout(() => {
+      this.api.getJobsParInsee(this.form.value.inseecode, this.apiData).subscribe(data => {
+        this.jobs = data.peJobs.results;
+      });
+    }, 2000);
+
   }
 
   public async likeFormation(job: Job) {
@@ -188,5 +190,5 @@ export class StudyTrainingListComponent implements OnInit {
       console.error('Erreur lors de l\'enregistrement de la formation aimée :', error);
     }
   }
-  
+
 }

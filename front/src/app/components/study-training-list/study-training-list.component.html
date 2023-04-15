@@ -18,8 +18,9 @@
       </select>
     </div>
     <div class="col-md-3">
-      <label for="inseecode" class="form-label">Code Postal</label>
-      <input required type="number" formControlName="inseecode" class="form-control" id="inseecode" placeholder="69220, 54210">
+      <label for="inseecode" class="form-label">Entrer code insee de la commune</label>
+      <input required type="number" formControlName="inseecode" class="form-control" id="inseecode" placeholder="Ex: Lyon 2 = 69382">
+      <a href="https://public.opendatasoft.com/explore/dataset/correspondance-code-insee-code-postal/table/?flg=f" target="_blank">Trouver code insee</a>
     </div>
     <div class="col-md-3">
       <button type="submit" class="btn btn-primary">Rechercher</button>
@@ -30,21 +31,26 @@
 <br>
 <div class="container-fluid">
   <div *ngIf="jobs.length > 0">
+    <div>
+      {{ jobs.length}} Résulats
+    </div>
       <div *ngFor="let job of jobs">
-          <div>
-            {{ jobs.length}} Résulats
-          </div>
-          <div class="card w-75 mb-2 center">
+          <div class="card w-75 mb-2 mx-auto">
               <div class="card-header">
                   {{ job.place.city }}
               </div>
               <div class="card-body">
-                  <h5 class="card-title">{{ job.job.contractDescription }}</h5>
+                  <h5 class="card-title">{{ job.title }}</h5>
+                  <p class="card-text text-truncate">Description : {{ job.job.description }}</p>
+                  
                   <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
-                  <p class="card-text">{{ job.job.contractType }}</p>
+                  <p class="card-text">Type de contrat : {{ job.job.contractType }}</p>
+                  <div *ngIf="job.job.duration">
+                    <p class="card-text">Horaire : {{ job.job.duration }}</p>
+                  </div>
                 
                   <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
-                  
+                  <a href="{{ job.url }}" class="btn btn-primary mt-2   me-2" target="_blank">Visualiser l'annonce</a>
                   <span (click)="likeFormation(job)">
                       <i class="bi bi-star-fill"></i>
                   </span>
