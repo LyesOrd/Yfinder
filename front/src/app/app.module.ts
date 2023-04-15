@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
-import { SearchFormComponent } from './components/search-form/search-form.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,7 +26,6 @@ import { RegisterComponent } from './components/register/register.component'
     NavbarComponent,
     StudyTrainingListComponent,
     RegisterComponent,
-    SearchFormComponent,
     LoginComponent,
     ProfileComponent
   ],
