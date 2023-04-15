@@ -2,55 +2,47 @@ import { Component, OnInit } from '@angular/core';
 import { AlternanceOffer } from './alternance-offer.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { arrayUnion } from 'firebase/firestore';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  styleUrls: ['./home-page.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('*', style({ opacity: 1 })),
+      transition('* => *', [
+        style({ opacity: 1 }),
+        animate(500)
+      ])
+    ])
+  ]
+
 })
 export class HomePageComponent implements OnInit {
   public text: string = '';
-  public texts: string[] = ['Texte 1', 'Texte 2', 'Texte 3'];
   public index: number = 0;
-
-  alternanceOffers: AlternanceOffer[] = [
-    {
-      id: '1',
-      title: 'Offre alternance 1',
-      company: 'Entreprise 1',
-      location: 'Paris',
-      description: "Description de l'offre alternance 1",
-    },
-    {
-      id: '2',
-      title: 'Offre alternance 2',
-      company: 'Entreprise 2',
-      location: 'Lyon',
-      description: "Description de l'offre alternance 2",
-    },
-    {
-      id: '3',
-      title: 'Offre alternance 3',
-      company: 'Entreprise 2',
-      location: 'Lyon',
-      description: "Description de l'offre alternance 2",
-    },
-
-
-   
+  public images: string[] = [
+    'assets/student_img.jpg',
+    'assets/student_photo_2.png',
+    'assets/student_photo_3.png',
   ];
+
+  public currentIndex: number = 0;
 
   constructor(private afs: AngularFirestore, private afAuth: AngularFireAuth) { }
 
 
   ngOnInit(): void {
     setInterval(() => {
-      this.text = this.texts[this.index];
-      this.index = (this.index + 1) % this.texts.length;
-    }, 1000);
+      this.nextSlide();
+    }, 5000);
+  }
+
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex + 1) % this.images.length;
   }
 
   async likeOffer(offer: AlternanceOffer) {

@@ -23,14 +23,9 @@ export const environment = {
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-
-  
-  
   
   constructor(private fb: FormBuilder, private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) { }
   
-  
-
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       nom: ['', Validators.required],

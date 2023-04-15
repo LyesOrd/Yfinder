@@ -4,6 +4,7 @@ import { compileNgModule } from '@angular/compiler';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { collectionGroup } from 'firebase/firestore';
 
 
 
@@ -117,9 +118,6 @@ export interface Formation {
   nafs: null | any; // Remplacer 'any' par le type approprié si possible
   training: null | any; // Remplacer 'any' par le type approprié si possible
   cleMinistereEducatif: string;
-  place: {
-    zipCode: string;
-  };
 }
 
 @Component({
@@ -139,8 +137,14 @@ export class StudyTrainingListComponent implements OnInit {
 
   public form!: FormGroup;
 
+  public isConnected = false;
 
-  constructor(private api: ApiListService, private fb: FormBuilder) { }
+
+  constructor(
+    private api: ApiListService, 
+    private fb: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore) { }
 
   ngOnInit(): void {
     this.api.getAllMetiers().subscribe(data => {
@@ -149,81 +153,45 @@ export class StudyTrainingListComponent implements OnInit {
 
     this.form = this.fb.group({
       selectedMetier: new FormControl(''),
-      departement: new FormControl('')
+      inseecode: new FormControl('')
     });
   }
 
-  public onSubmit(): string {
+  public onSubmit() {
     console.log(this.form.value);
     this.getSelectedMetier();
-    return this.form.value.departement;
-    return this.insee
   }
 
   public getSelectedMetier(): void {
     this.api.selectedMetier = this.form.value.selectedMetier;
     this.api.getData().subscribe(data => {
       this.apiData = data.labelsAndRomes[0].romes;
+      console.log(this.apiData);
+
     })
     
-    this.api.getFormationsParRegion(this.form.value.departement, this.apiData).subscribe(
-    console.log(this.insee + 'dep');
-    /*this.api.getFormationsParRegion(this.departement, this.apiData).subscribe(
-      data => {
-        // Traitement des données de réponse de l'API
-        this.formations = data.results;
-        
-      },
-      error => {
-        // Gestion des erreurs
-        console.error(error);
-      }
-    );*/
-    this.api.getJobsParInsee(this.insee, this.apiData).subscribe(data => {
-      
+    this.api.getJobsParInsee(this.form.value.inseecode, this.apiData).subscribe(data => {
       this.jobs = data.peJobs.results;
       console.log(this.jobs[0].title + '-- job ');
     });
   
   }
 
-  constructor(
-    private api: ApiListService,
-    private afAuth: AngularFireAuth,
-    private afs: AngularFirestore
-  ) { }
-
-  async likeFormation(formation: Formation) {
+  public async likeFormation(job: Job) {
     try {
       const user = await this.afAuth.currentUser;
       if (user) {
+        this.isConnected = true;
         const likedFormationsCollection = this.afs.collection('users').doc(user.uid).collection('likedFormations');
-        await likedFormationsCollection.doc(formation.title).set({ ...formation });
-        console.log('La formation a été enregistrée avec succès.');
+        await likedFormationsCollection.doc(job.title).set({ ...job });
+        console.log('L\'offre d\'alternance a été enregistrée avec succès.');
       } else {
         console.error('Erreur : utilisateur non connecté');
+        this.isConnected = false;
       }
     } catch (error) {
       console.error('Erreur lors de l\'enregistrement de la formation aimée :', error);
     }
   }
   
-
-  ngOnInit(): void {
-    /*this.api.getData().subscribe(data => {
-      // Essayer de comprendre ce principe pour appliquer la même chose au autres API
-      console.log(data)
-      this.apiData = data.labelsAndRomes.map((item: LabelsAndRomesData) => item.romes); // Utiliser la fonction map pour extraire les codes ROMES de chaque élément
-      console.log(this.apiData, 'apiData')
-    })*/
-
-    
-
-    this.api.getAllMetiers().subscribe(data => {
-      this.metiers = data.metiers;
-    });
-
-
-
-  }
 }

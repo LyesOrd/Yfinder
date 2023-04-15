@@ -1,4 +1,5 @@
-<div *ngIf="user && userProfile | async as profile">
+<app-navbar></app-navbar>
+<!-- <div *ngIf="user && userProfile | async as profile">
   <h2>Profil</h2>
   <p>Nom: {{ profile.nom }}</p>
   <p>Prénom: {{ profile.prenom }}</p>
@@ -23,5 +24,42 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="container-fluid">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <div *ngIf="user && userProfile | async as profile" class="card">
+        {{profile | json}}
+        <div class="card-body text-center">
+          <i class="bi bi-person-circle" style="font-size: 128px;"></i>
+          <h5 class="card-title">{{profile.nom}} {{profile.prenom}}</h5>
+        </div>
+        <ul class="list-group list-group-flush" style="text-align: center;">
+          <li class="list-group-item">Numéro de téléphone: {{profile.telephone}}</li>
+        </ul>
+        <div *ngIf="offerLiked | async as offers">
+          <h4 class="h4">Mes offres</h4>
+          <div *ngFor="let offer of offers">
+            <div class="card w-75 mb-2">
+              <div class="card-header">
+                {{ offer.ideaType }}
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ offer.title }}</h5>
+                <p class="card-text">{{ offer.rncpLabel }}</p>
+                {{offer | json}}
+                <a href="{{ offer.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
+                      <span (click)="unlikeFormation(offer.id!)">
+                        <i class="bi bi-trash-fill"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
 

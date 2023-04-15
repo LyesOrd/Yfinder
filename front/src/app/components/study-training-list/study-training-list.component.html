@@ -8,57 +8,50 @@
 <button (click)="onSubmit()">Valider</button>
 </div> -->
 
-<div class="container">
-    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="form-inline">
-      <div class="form-group mb-2">
-        <label for="selectMetier">Selectionné un domaine</label>
-        <select id="selectMetier" formControlName="selectedMetier" class="form-control">
-          <option *ngFor="let metier of metiers" [value]="metier">{{ metier }}</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="inputDepartement">Entrez le département :</label>
-        <input type="number" id="inputDepartement" formControlName="departement" class="form-control" placeholder="Ex: 75">
-      </div>
-      <button type="submit" class="btn btn-primary">Valider</button>
-    </form>
-  </div>
-  
-
-<div *ngIf="formations.length > 0;" class="container">
-    <div *ngFor="let formation of formations" class="card mb-2">
-      <div class="card-header">
-        {{ formation.ideaType }}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{ formation.title }}</h5>
-        <p class="card-text">{{ formation.rncpLabel }}</p>
-        <p class="card-text">{{ formation.zipCode }}</p>
-        <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Plus d'infos</a>
-
-<div *ngIf="formations.length > 0; else noFormations">
-    <div *ngFor="let formation of formations">
-        <div class="card w-75 mb-2 center">
-            <div class="card-header">
-                {{ formation.ideaType }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ formation.title }}</h5>
-                <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
-                <p class="card-text">{{ formation.rncpLabel }}</p>
-               
-                <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
-                <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
-                <span (click)="likeFormation(formation)">
-                    <i class="bi bi-star-fill"></i>
-                  </span>
-                  
-            </div>
-        </div>
-
+<div class="container-fluid border">
+  <h3 class="h3">Rechercher votre alternance</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <label for="selectedMetier" class="form-label">Domaine</label>
+      <select id="selectedMetier" formControlName="selectedMetier" class="form-control">
+        <option *ngFor="let metier of metiers" [value]="metier">{{ metier }}</option>
+      </select>
     </div>
-  </div>
-<div *ngIf="formations.length === 0" class="container">
-    <h3 class="h4">0 Résultats. Aucune offre de formation disponible.</h3>
+    <div class="col-md-3">
+      <label for="inseecode" class="form-label">Code Postal</label>
+      <input required type="number" formControlName="inseecode" class="form-control" id="inseecode" placeholder="69220, 54210">
+    </div>
+    <div class="col-md-3">
+      <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+  </form>
 </div>
+<br>
+<br>
+<div class="container-fluid">
+  <div *ngIf="jobs.length > 0">
+      <div *ngFor="let job of jobs">
+          <div class="card w-75 mb-2 center">
+              <div class="card-header">
+                  {{ job.place.city }}
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">{{ job.job.contractDescription }}</h5>
+                  <!-- Remplacez "formation.title" par la propriété du titre dans vos données -->
+                  <p class="card-text">{{ job.job.contractType }}</p>
+                
+                  <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
+                  
+                  <span *ngIf="isConnected" (click)="likeFormation(job)">
+                      <i class="bi bi-star-fill"></i>
+                  </span>
+              </div>
+          </div>
+      </div>
+    </div>
+  <div *ngIf="jobs.length === 0" class="container-fluid border">
+      <h3 class="h4">0 Résultats. Aucune offre d'alternance disponible.</h3>
+  </div>
+</div>
+
   

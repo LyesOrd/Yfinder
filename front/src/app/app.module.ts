@@ -7,13 +7,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudyTrainingListComponent } from './components/study-training-list/study-training-list.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Importez ces deux modules
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { firebaseConfig } from '../environments/firebase-config';
-import { ProfileComponent } from './components/profile/profile.component';
-
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -40,7 +39,8 @@ import { RegisterComponent } from './components/register/register.component'
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
     AngularFirestoreModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
 
   ],
   providers: [],

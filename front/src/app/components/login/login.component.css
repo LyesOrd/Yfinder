@@ -7,6 +7,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.contactForm {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    place-items: center;
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
+}
+
 .flexL {
     display: grid;
     height: 100vh;

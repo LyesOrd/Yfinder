@@ -27,7 +27,6 @@ export class ApiListService {
   }
 
   public getFormationsParRegion(departement: string, romes: string): Observable<any> {
-    // Créer les paramètres pour l'appel API avec les valeurs de departement et romes
     let params = new HttpParams();
     params = params.set('departement', departement);
     params = params.set('romes', romes);
@@ -36,7 +35,6 @@ export class ApiListService {
   }
 
   public getJobsParInsee(insee: string, romes: string): Observable<any> {
-    // Créer les paramètres pour l'appel API avec les valeurs de departement et romes
     let params = new HttpParams();
     params = params.set('insee', insee);
     params = params.set('romes', romes);

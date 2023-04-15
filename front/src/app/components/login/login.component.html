@@ -1,42 +1,25 @@
-<!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <title>Login Form Design </title>
-    <link rel="stylesheet" href="/front/src/app/app.component.css">
-</head>
-
-<header>
-    <app-navbar></app-navbar>
-</header>
-
-<body>
-
-    <div class="wrapper">
+<app-navbar></app-navbar>
+    <div class="contactForm">
+       <div class="wrapper">
         <div class="title">
             Se connecter
         </div>
-        <form [formGroup]="loginForm" (submit)="onSubmit()">
-            <div class="field">
-                <input type="email" id="email" formControlName="email" required>
-                <label>Adresse e-mail</label>
-            </div>
-            <div class="field">
-                <input type="password" id="password" formControlName="password" required>
-                <label>Mot de passe</label>
-            </div>
-            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-            <div class="field">
-                <input type="submit" value="Connexion">
-            </div>
-            <div class="signup-link">
-                Pas encore membre ? <a href="/register">S'enregistrer</a>
-            </div>
+            <form [formGroup]="loginForm" (submit)="onSubmit()">
+                <div class="field">
+                    <input type="email" id="email" formControlName="email" required>
+                    <label>Adresse e-mail</label>
+                </div>
+                <div class="field">
+                    <input type="password" id="password" formControlName="password" required>
+                    <label>Mot de passe</label>
+                </div>
+                <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+                <div class="field">
+                    <input type="submit" value="Connexion">
+                </div>
+                <div class="signup-link">
+                    Pas encore membre ? <a href="/register">S'enregistrer</a>
+                </div>
         </form>
-    </div>
-
-</body>
-
-</html>
+    </div> 
+</div>
