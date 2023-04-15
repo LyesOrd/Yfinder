@@ -51,9 +51,6 @@ export class HomePageComponent implements OnInit {
       if (user) {
         const likedOffersCollection = this.afs.collection('users').doc(user.uid).collection('likedOffers');
         await likedOffersCollection.doc(offer.id).set(offer);
-        console.log('L\'offre d\'alternance a été enregistrée avec succès.');
-      } else {
-        console.error('Erreur : utilisateur non connecté');
       }
     } catch (error) {
       console.error('Erreur lors de l\'enregistrement de l\'offre d\'alternance aimée :', error);

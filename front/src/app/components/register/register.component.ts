@@ -40,10 +40,8 @@ export class RegisterComponent implements OnInit {
   async onSubmit() {
     if (this.registerForm.valid) {
       const { nom, prenom, email, telephone, password } = this.registerForm.value;
-      console.log('Email:', email);
       try {
         const { user } = await this.afAuth.createUserWithEmailAndPassword(email, password);
-        console.log('User created successfully:', user);
   
         // Enregistrement des données dans Cloud Firestore
         this.afs.collection('users').doc(user?.uid).set({

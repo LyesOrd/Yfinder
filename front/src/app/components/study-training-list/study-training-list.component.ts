@@ -158,7 +158,6 @@ export class StudyTrainingListComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.form.value);
     this.getSelectedMetier();
   }
 
@@ -166,13 +165,10 @@ export class StudyTrainingListComponent implements OnInit {
     this.api.selectedMetier = this.form.value.selectedMetier;
     this.api.getData().subscribe(data => {
       this.apiData = data.labelsAndRomes[0].romes;
-      console.log(this.apiData);
-
     })
     
     this.api.getJobsParInsee(this.form.value.inseecode, this.apiData).subscribe(data => {
       this.jobs = data.peJobs.results;
-      console.log(this.jobs[0].title + '-- job ');
     });
   
   }
@@ -184,7 +180,6 @@ export class StudyTrainingListComponent implements OnInit {
         this.isConnected = true;
         const likedFormationsCollection = this.afs.collection('users').doc(user.uid).collection('likedFormations');
         await likedFormationsCollection.doc(job.title).set({ ...job });
-        console.log('L\'offre d\'alternance a été enregistrée avec succès.');
       } else {
         console.error('Erreur : utilisateur non connecté');
         this.isConnected = false;

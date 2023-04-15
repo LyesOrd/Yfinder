@@ -34,16 +34,12 @@ export class LoginComponent {
     const { email, password } = this.loginForm.value;
     try {
       const { user } = await this.afAuth.signInWithEmailAndPassword(email, password);
-      console.log('User logged in successfully:', user);
   
-      // Récupération des informations de l'utilisateur depuis Cloud Firestore
       const userDoc = await this.afs.collection('users').doc(user?.uid).get().toPromise();
       if (userDoc?.exists) {
         const userData: { nom: string, prenom: string } = userDoc.data() as { nom: string, prenom: string };
         const nom = userData.nom;
         const prenom = userData.prenom;
-  
-        // Redirection vers la page d'accueil
         this.router.navigate(['']);
       }
       this.errorMessage = null;

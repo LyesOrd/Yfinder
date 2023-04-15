@@ -35,18 +35,6 @@ function getMetiersByTitle(title) {
   });
 }
 
-getMetiersByTitle(title)
-.then(metiers => {
-  /*if (metiers) {
-    console.log('Liste des métiers pour le titre \'' + title + '\' :', metiers);
-  } else {
-    console.log('Aucun métier trouvé pour le titre \'' + title + '\'.');
-  }*/
-})
-.catch(error => {
-  console.error('Une erreur s\'est produite lors de la récupération des métiers :', error);
-});
-
 // Fonction pour effectuer l'appel GET avec les paramètres 'romes' et 'departement'
 function getFormationsByRomesAndDepartement(romes, departement) {
   return axios.get('https://labonnealternance.apprentissage.beta.gouv.fr/api/V1/formationsParRegion?caller=contact@ynov.com', {
