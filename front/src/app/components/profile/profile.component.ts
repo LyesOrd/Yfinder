@@ -31,7 +31,6 @@ export class ProfileComponent implements OnInit {
       this.user = user;
       if (user) {
         this.userProfile = this.afs.collection('users').doc<UserProfile>(user.uid).valueChanges();
-        console.log(this.userProfile);
         this.getLikedFormations();
       }
     });

@@ -31,6 +31,9 @@
 <div class="container-fluid">
   <div *ngIf="jobs.length > 0">
       <div *ngFor="let job of jobs">
+          <div>
+            {{ jobs.length}} Résulats
+          </div>
           <div class="card w-75 mb-2 center">
               <div class="card-header">
                   {{ job.place.city }}
@@ -42,7 +45,7 @@
                 
                   <!-- Remplacez "formation.description" par la propriété de la description dans vos données -->
                   
-                  <span *ngIf="isConnected" (click)="likeFormation(job)">
+                  <span (click)="likeFormation(job)">
                       <i class="bi bi-star-fill"></i>
                   </span>
               </div>

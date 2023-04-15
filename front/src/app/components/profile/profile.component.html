@@ -1,36 +1,8 @@
 <app-navbar></app-navbar>
-<!-- <div *ngIf="user && userProfile | async as profile">
-  <h2>Profil</h2>
-  <p>Nom: {{ profile.nom }}</p>
-  <p>Prénom: {{ profile.prenom }}</p>
-  <p>Téléphone: {{ profile.telephone }}</p>
-</div>
-
-<div *ngIf="likedFormations | async as formations">
-  <h2>Formations aimées</h2>
-  <div *ngFor="let formation of formations">
-    <div class="card w-75 mb-2">
-      <div class="card-header">
-        {{ formation.ideaType }}
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{ formation.title }}</h5>
-        <p class="card-text">{{ formation.rncpLabel }}</p>
-        
-        <a href="{{ formation.onisepUrl }}" class="btn btn-primary">Go somewhere</a>
-              <span (click)="unlikeFormation(formation.id)">
-                <i class="bi bi-trash-fill"></i>
-        </span>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container-fluid">
   <div class="row justify-content-md-center">
     <div class="col-md-6">
       <div *ngIf="user && userProfile | async as profile" class="card">
-        {{profile | json}}
         <div class="card-body text-center">
           <i class="bi bi-person-circle" style="font-size: 128px;"></i>
           <h5 class="card-title">{{profile.nom}} {{profile.prenom}}</h5>
